@@ -31,7 +31,8 @@ lst = graph.query(cypher)
 #print(graph.query(cypher), "\n\n\n")
 
 matches = []
-for i in range(int(len(lst)/2)):
+#for i in range(int(len(lst)/2)):
+for i in range(len(lst)):
     #print(lst[i]["f1"]["fileId"])
     matches.append([[lst[i]["f1"]["fileId"],lst[i]["f2"]["fileId"]], lst[i]["k"]["keywordId"]])
 
@@ -82,6 +83,8 @@ n2 = ["oven"]
 noden = "oven"
 n2=["food_6.txt"]
 noden = "food_6.txt"
+n2= ["cancer"]
+noden = "cancer"
 #for node in G.nodes:
     #print("node: ", node)
 
@@ -114,9 +117,11 @@ for i in range(len(matches)):
             words.append(matches[j][1])
     counts.append([matches[i][0], count, words])
     repeats.append(matches[i][0])
+    repeats.append([matches[i][0][1], matches[i][0][0]])
 
 
 for count in counts:
-    if count[1] > 2:
+    if count[1] > 1:
         print(count)
+print(len(counts))
 
